@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Areeza Birthday Letter</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #fff1f2, #fef3c7);
+    font-family: 'Dancing Script', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .envelope, .letter {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    max-width: 500px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    border: 1px solid #fecdd3;
+  }
+  .button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    background: #fecdd3;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 16px;
+  }
+  .message-box {
+    white-space: pre-wrap;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #fecdd3;
+    font-size: 18px;
+    background-color: #fff8f8;
+  }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+<div class="envelope" id="envelope">
+  <h2>To: My Dear Areeza❤️</h2>
+  <p>Happy birthday sweetheart!!</p>
+  <button class="button" onclick="openLetter()">Open Letter</button>
+</div>
+
+<div class="letter hidden" id="letter">
+  <p>From: Riad</p>
+  <div id="message" class="message-box">Dear Areeza,
+
+Wishing you the happiest birthday — full of love, laughter, and little surprises. This is your first birthday with me, and I'm not able to be physically with you, but you know that my heart always remains with you. It hasn't been many days since we got to know each other, but it feels as if we have known each other forever. I'm very happy to have you in my life, and I think anyone who knows you well will feel the same about you. I'll be honest with you. It's not like I was not happy before you came, but after you, my life feels complete. I hope you always remain as happy and cheerful as you truly are, and your nature always remains the same, and may Allah keep it in my fate to always see you in your good and bads. I wish you a lifetime of happiness and love. 
+
+And I remembered you would like a perfume as a gift from me. As you wish, Your Highness. Enjoy your day and your life to the fullest, my love (and also love me always as you do... no, no, love me even more, my love). I love you and I always will in every situation and circumstance babu (You'll forever be my babu).
+Love,
+Yours and yours only, Riad❤️</div>
+  <br>
+    <button class="button" onclick="closeLetter()">Close</button>
+</div>
+
+<script>
+function openLetter() {
+  document.getElementById('envelope').classList.add('hidden');
+  document.getElementById('letter').classList.remove('hidden');
+}
+function closeLetter() {
+  document.getElementById('letter').classList.add('hidden');
+  document.getElementById('envelope').classList.remove('hidden');
+}
+function downloadMessage() {
+  const msg = document.getElementById('message').innerText;
+  const blob = new Blob([msg], { type: "text/plain" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "Areeza_birthday_message.txt";
+  a.click();
+  URL.revokeObjectURL(url);
+}
+function printLetter() {
+  const msg = document.getElementById('message').innerText;
+  const printWindow = window.open('', '', 'height=500,width=800');
+  printWindow.document.write('<pre>' + msg + '</pre>');
+  printWindow.document.close();
+  printWindow.print();
+}
+function addPS() {
+  document.getElementById('message').innerText += "\n\nP.S. I love you ❤️";
+}
+</script>
+</body>
+</html>
