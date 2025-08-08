@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Areeza Birthday Letter</title>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet" />
 <style>
   body {
     margin: 0;
@@ -61,39 +61,47 @@ Wishing you the happiest birthday — full of love, laughter, and little surpris
 And I remembered you would like a perfume as a gift from me. As you wish, Your Highness. Enjoy your day and your life to the fullest, my love (and also love me always as you do... no, no, love me even more, my love). I love you and I always will in every situation and circumstance babu (You'll forever be my babu).
 Love,
 Yours and yours only, Riad❤️</div>
-  <br>
-    <button class="button" onclick="closeLetter()">Close</button>
+  <br />
+  <button class="button" onclick="closeLetter()">Close</button>
 </div>
 
 <script>
-function openLetter() {
-  document.getElementById('envelope').classList.add('hidden');
-  document.getElementById('letter').classList.remove('hidden');
-}
-function closeLetter() {
-  document.getElementById('letter').classList.add('hidden');
-  document.getElementById('envelope').classList.remove('hidden');
-}
-function downloadMessage() {
-  const msg = document.getElementById('message').innerText;
-  const blob = new Blob([msg], { type: "text/plain" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "Areeza_birthday_message.txt";
-  a.click();
-  URL.revokeObjectURL(url);
-}
-function printLetter() {
-  const msg = document.getElementById('message').innerText;
-  const printWindow = window.open('', '', 'height=500,width=800');
-  printWindow.document.write('<pre>' + msg + '</pre>');
-  printWindow.document.close();
-  printWindow.print();
-}
-function addPS() {
-  document.getElementById('message').innerText += "\n\nP.S. I love you ❤️";
-}
+  // Set your password here (the date of your first date)
+  const password = "06-05-2025"; // change this to your real first date in any format you want
+
+  function openLetter() {
+    const answer = prompt("When was our first date? (DD-MM-YYYY)");
+    if (answer && answer.trim() === password) {
+      document.getElementById('envelope').classList.add('hidden');
+      document.getElementById('letter').classList.remove('hidden');
+    } else {
+      alert("Oops! That's not the correct answer. Please try again.");
+    }
+  }
+  function closeLetter() {
+    document.getElementById('letter').classList.add('hidden');
+    document.getElementById('envelope').classList.remove('hidden');
+  }
+  function downloadMessage() {
+    const msg = document.getElementById('message').innerText;
+    const blob = new Blob([msg], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "Areeza_birthday_message.txt";
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+  function printLetter() {
+    const msg = document.getElementById('message').innerText;
+    const printWindow = window.open('', '', 'height=500,width=800');
+    printWindow.document.write('<pre>' + msg + '</pre>');
+    printWindow.document.close();
+    printWindow.print();
+  }
+  function addPS() {
+    document.getElementById('message').innerText += "\n\nP.S. I love you ❤️";
+  }
 </script>
 </body>
 </html>
